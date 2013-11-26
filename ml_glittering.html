@@ -1,0 +1,71 @@
+<!-- 
+* Malayalam Glittering
+* Copyright 2013, Akhilan <mail@akhilan.in>
+* 
+* 
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as published by
+* the Free Software Foundation; either version 3 of the License, or
+* (at your option) any later version.
+* 
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Lesser General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+-->
+
+<!-- 
+* മലയാളം ഗ്ലിറ്ററിങ്ങ് 
+* പകർപ്പവകാശം 2013, അഖിലൻ <mail@akhilan.in>
+* 
+* ഇത് ഒരു സ്വതന്ത്ര സോഫ്റ്റ്‌വേറാണ്; ഫ്രീ സോഫ്റ്റ്‌വേർ ഫൗണ്ടേഷൻ പ്രസിദ്ധീകരിക്കുന്ന 
+* ഗ്നു സാർവ്വജനിക അനുവാദപത്രം, പതിപ്പ്  3 അല്ലെങ്കിൽ (താങ്കളുടെ ഇച്ചാനുസരണം) മറ്റേതെങ്കിലും പുതിയ പതിപ്പ്, 
+* പ്രകാരം താങ്കൾക്കത് പുനർവിതരണമോ കൂടെ/അല്ലെങ്കിൽ മാറ്റം വരുത്തുകയോ ചെയ്യാവുന്നതാണ്.
+* 
+* ഈ പ്രോഗ്രാം വിതരണം ചെയ്യുന്നത് ഇത് ഉപകാരപ്പെടുമെന്ന പ്രതീക്ഷയിലാണ്, 
+* പക്ഷേ യാതൊരു ഗുണമേന്മാ ഉത്തരവാദിത്തവും വഹിക്കുന്നില്ല; ഇത് വ്യാപാരയോഗ്യമെന്നോ 
+* പ്രത്യേക ഉപയോഗത്തിന് അനുയോജ്യമെന്നോ ഉള്ള യാതൊരു ഗുണമേന്മാ ഉത്തരവാദിത്തവും ഉൾക്കൊള്ളുന്നില്ല. 
+* കൂടുതൽ വിവരങ്ങൾക്ക് ഗ്നു സാർവ്വജനിക അനുവാദപത്രം കാണുക.
+* 
+* ഈ പ്രോഗ്രാമിനൊപ്പം ഗ്നു സാർവ്വജനിക അനുവാദപത്രത്തിന്റെ ഒരു പകർപ്പ് താങ്കൾക്ക് ലഭിച്ചിട്ടുണ്ടാകണം; 
+* ഇല്ലെങ്കിൽ ഫ്രീ സോഫ്റ്റ്‌വെയർ ഫൗണ്ടേഷനു്  എഴുതുക
+-->
+
+
+
+
+<html>
+<head>
+		<meta charset="utf-8">
+		<title>മലയാളം മെട്രിക്സ് - ഗ്ലിറ്ററിങ്ങ്</title>
+</head>
+
+<body bgcolor="#00000">
+	<center>
+		<canvas id="myCanvasMatrix" width="1000" height="500" style="border:1px solid #c3c3c3;">
+			ക്ഷമിക്കുക. താങ്കളുടെ ബ്രൗസർ പിന്തുണയ്ക്കില്ല. ദയവായി പുതുക്കുക.
+		</canvas>
+	</center>
+	<script type="text/javascript">
+		var c1=document.getElementById("myCanvasMatrix");
+		var ctx1=c1.getContext("2d");
+		var Matrix=function()
+			{
+			ctx1.fillStyle='rgba(0,0,0,.05)';
+			ctx1.fillRect(0,0,1000,500)
+			ctx1.fillStyle="#0f0";
+			ctx1.font = '15pt Georgia';;
+			var char = ['അ','ആ','ഇ','ഈ','ഉ','ഊ','ഋ','എ','ഏ','ഒ','ഓ','ഔ','അം','അഃ'];
+			for(ind=0;ind<14;ind++)
+				{
+				ctx1.fillText(char[ind], Math.random()*(1000), Math.random()*(500));
+				}
+			};
+		setInterval(Matrix,30);
+	</script>
+</body>
+</html>

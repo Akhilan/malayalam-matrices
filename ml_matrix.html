@@ -1,0 +1,105 @@
+<!-- 
+* Malayalam Matrix Rain
+* Copyright 2013, Akhilan <mail@akhilan.in>
+* 
+* 
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as published by
+* the Free Software Foundation; either version 3 of the License, or
+* (at your option) any later version.
+* 
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Lesser General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+-->
+
+<!-- 
+* മലയാളം മെട്രിക്സ് മഴ
+* പകർപ്പവകാശം 2013, അഖിലൻ <mail@akhilan.in>
+* 
+* ഇത് ഒരു സ്വതന്ത്ര സോഫ്റ്റ്‌വേറാണ്; ഫ്രീ സോഫ്റ്റ്‌വേർ ഫൗണ്ടേഷൻ പ്രസിദ്ധീകരിക്കുന്ന 
+* ഗ്നു സാർവ്വജനിക അനുവാദപത്രം, പതിപ്പ്  3 അല്ലെങ്കിൽ (താങ്കളുടെ ഇച്ചാനുസരണം) മറ്റേതെങ്കിലും പുതിയ പതിപ്പ്, 
+* പ്രകാരം താങ്കൾക്കത് പുനർവിതരണമോ കൂടെ/അല്ലെങ്കിൽ മാറ്റം വരുത്തുകയോ ചെയ്യാവുന്നതാണ്.
+* 
+* ഈ പ്രോഗ്രാം വിതരണം ചെയ്യുന്നത് ഇത് ഉപകാരപ്പെടുമെന്ന പ്രതീക്ഷയിലാണ്, 
+* പക്ഷേ യാതൊരു ഗുണമേന്മാ ഉത്തരവാദിത്തവും വഹിക്കുന്നില്ല; ഇത് വ്യാപാരയോഗ്യമെന്നോ 
+* പ്രത്യേക ഉപയോഗത്തിന് അനുയോജ്യമെന്നോ ഉള്ള യാതൊരു ഗുണമേന്മാ ഉത്തരവാദിത്തവും ഉൾക്കൊള്ളുന്നില്ല. 
+* കൂടുതൽ വിവരങ്ങൾക്ക് ഗ്നു സാർവ്വജനിക അനുവാദപത്രം കാണുക.
+* 
+* ഈ പ്രോഗ്രാമിനൊപ്പം ഗ്നു സാർവ്വജനിക അനുവാദപത്രത്തിന്റെ ഒരു പകർപ്പ് താങ്കൾക്ക് ലഭിച്ചിട്ടുണ്ടാകണം; 
+* ഇല്ലെങ്കിൽ ഫ്രീ സോഫ്റ്റ്‌വെയർ ഫൗണ്ടേഷനു്  എഴുതുക
+-->
+
+
+
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<meta charset="utf-8">
+	<title>മലയാളം മെട്രിക്സ് മഴ</title>
+</head>
+<body>
+	<div align="center">
+		<canvas id="q" width="400" height="475">ക്ഷമിക്കുക. താങ്കളുടെ ബ്രൗസർ പിന്തുണയ്ക്കില്ല.</canvas><br/><br/>
+		<button id="play">തുടരുക</button>
+		<button id="pause">നിർത്തുക</button>
+	</div>
+	<script>
+		$(document).ready(function()
+			{
+			var s=window.screen;
+			var width = q.width=s.width;
+			var height = q.height;
+			var yPositions = Array(300).join(0).split('');
+			var ctx=q.getContext('2d');
+	
+			var draw = function () 
+				{
+			  	ctx.fillStyle='rgba(0,0,0,.05)';
+				  ctx.fillRect(0,0,width,height);
+				  ctx.fillStyle='#0F0';
+				  ctx.font = '12pt Georgia';
+				  yPositions.map(function(y, index)
+					{
+					var ml=	['അ','ആ','ഇ','ഈ','ഉ','ഊ','ഋ','എ','ഏ','ഐ','ഒ','ഓ','ഔ','ക','ഖ','ഗ','ഘ','ങ','ച','ഛ','ജ','ഝ','ഞ','ട','ഠ','ഡ','ഢ','ണ','ത','ഥ','ദ','ധ','ന','പ','ഫ','ബ','ഭ','മ','യ','ര','ല','വ','ശ','ഷ','സ','ഹ','ള','ഴ','റ','ർ','ൺ','ൽ','ൾ','ൻ'];
+					text= ml[Math.floor(Math.random()*54)];
+					 x = (index * 15)+12;
+				    	q.getContext('2d').fillText(text, x, y);
+					if(y > 100 + Math.random()*1e4)
+						{
+						  yPositions[index]=0;
+						}
+					else
+						{
+						 yPositions[index] = y + 12;
+						}
+					  });
+				};
+
+			RunMatrix();
+
+			function RunMatrix()
+				{
+				if(typeof Game_Interval != "undefined") clearInterval(Game_Interval);
+				Game_Interval = setInterval(draw, 33);
+				}
+
+			function StopMatrix()
+				{
+				clearInterval(Game_Interval);
+				}
+		
+			//setInterval(draw, 33);
+				$("button#pause").click(function(){
+				StopMatrix();});
+				$("button#play").click(function(){RunMatrix();});
+
+			})
+	</script>
+</body>
+</html>
